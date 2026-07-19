@@ -1,0 +1,12 @@
+# Normalize all text files to LF in the repo (Windows checkouts get CRLF only
+# where their tools require it). Prevents whole-tree CRLF churn on OS moves.
+* text=auto
+*.sh text eol=lf
+*.bat text eol=crlf
+*.png binary
+*.jpg binary
+*.webp binary
+*.tgz binary
+*.so binary
+*.apk binary
+*.jar binary

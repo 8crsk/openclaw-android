@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">4AIs</string>
+    <string name="setup_welcome_headline">Private AI on your phone</string>
+    <string name="setup_welcome_subhead">Full agent mode. Free tier included.</string>
+    <string name="setup_welcome_cta">Get started</string>
+    <string name="setup_get_key_headline">Get your free key</string>
+    <string name="setup_get_key_subhead">About 90 seconds.</string>
+    <string name="setup_get_key_open_nvidia">Open NVIDIA</string>
+    <string name="setup_get_key_have_key">I have my key</string>
+    <string name="setup_paste_key_headline">Paste your key</string>
+    <string name="setup_paste_key_clipboard_hint">Pasted from clipboard ✓</string>
+    <string name="setup_paste_key_continue">Continue</string>
+    <string name="setup_pick_model_headline">Pick a model</string>
+    <string name="setup_pick_model_subhead">You can change this later in Settings.</string>
+    <string name="setup_clipboard_privacy">We\'ll check your clipboard for the key when you come back.</string>
+    <string name="gateway_notification_title">4AIs Gateway</string>
+    <string name="gateway_notification_running">Running on port %d</string>
+    <string name="gateway_notification_starting">Starting…</string>
+    <string name="accessibility_service_description">Enables 4AIs to read screen content and perform taps, swipes, and text input on your behalf. Required for agent mode.</string>
+</resources>

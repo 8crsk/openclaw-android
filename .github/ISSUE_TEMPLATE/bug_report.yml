@@ -1,0 +1,46 @@
+name: Bug report
+description: Something broke — crash, agent misbehavior, setup failure
+labels: [bug]
+body:
+  - type: input
+    id: device
+    attributes:
+      label: Device & Android version
+      placeholder: "e.g. Pixel 7, Android 14"
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: App version
+      description: Settings → About → Version
+      placeholder: "e.g. 0.7.0 (build 13)"
+    validations:
+      required: true
+  - type: dropdown
+    id: provider
+    attributes:
+      label: Model provider
+      options:
+        - NVIDIA (free)
+        - OpenAI
+        - Anthropic
+        - Google Gemini
+        - Not applicable
+    validations:
+      required: true
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: What did you do, what did you expect, what happened instead?
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs
+      description: >
+        If the gateway failed: the error text shown in-app. If you can run adb:
+        `adb logcat -s NodeSetup NodeProcess ChatViewModel WsRpcClient`.
+      render: text

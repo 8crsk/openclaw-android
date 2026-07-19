@@ -1,0 +1,4 @@
+# Copy to local.properties and set your SDK path. That's it — no API keys are
+# needed to build. Users enter their provider key (NVIDIA/OpenAI/Anthropic/Gemini)
+# inside the app; it's stored in Android EncryptedSharedPreferences on-device.
+sdk.dir=C\:\\Users\\you\\AppData\\Local\\Android\\Sdk

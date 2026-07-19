@@ -1,0 +1,40 @@
+name: CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      # The prebuilt Node.js .so files come from a GitHub Release (free
+      # bandwidth, unlike LFS). Cache keyed on the pinned checksum so the
+      # ~33MB download only happens when the libs actually change.
+      - uses: actions/cache@v4
+        with:
+          path: app/src/main/jniLibs
+          key: node-libs-${{ hashFiles('scripts/node-libs.sha256') }}
+      - run: ./scripts/fetch-node-libs.sh
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+      - uses: gradle/actions/setup-gradle@v4
+      - name: Build, unit test, lint
+        run: ./gradlew assembleDebug testDebugUnitTest lintDebug --stacktrace
+      - name: Upload debug APK
+        uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: debug-apk
+          path: app/build/outputs/apk/debug/*.apk
+      - name: Upload test reports on failure
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: test-reports
+          path: |
+            app/build/reports/tests/
+            app/build/reports/lint-results-debug.html

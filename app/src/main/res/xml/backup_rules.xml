@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Auto-backup rules for Android < 12. The application manifest still sets
+  android:allowBackup="false", so this file is mostly defense-in-depth: if some
+  future change ever flips backup back on, the sensitive paths below are still
+  excluded by name.
+
+  Excluded:
+    - EncryptedSharedPreferences (encrypted_keys.xml + master key wrap)
+    - OpenClaw gateway home dir (auth-token, config.json with provider secrets)
+    - DataStore (user preferences, including device id + lifetime token counters)
+    - npm + node cache (huge, also not backup-worthy)
+-->
+<full-backup-content>
+    <exclude domain="sharedpref" path="encrypted_keys.xml" />
+    <exclude domain="sharedpref" path="encrypted_keys_fallback.xml" />
+    <exclude domain="file" path="home/" />
+    <exclude domain="file" path="openclaw/" />
+    <exclude domain="file" path="npm-cache/" />
+    <exclude domain="file" path="datastore/" />
+</full-backup-content>

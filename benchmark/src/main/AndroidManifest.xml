@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Required so macrobenchmark can find apps to benchmark on API 30+. -->
+    <queries>
+        <package android:name="com.crsk.openclaw" />
+    </queries>
+</manifest>

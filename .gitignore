@@ -1,0 +1,81 @@
+*.iml
+.gradle
+/local.properties
+/.idea
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+local.properties
+*.apk
+*.aab
+*.ap_
+*.dex
+*.class
+*.log
+/app/build
+/app/release
+*.jks
+*.keystore
+*.env
+.claude/
+.gstack/
+
+# Prebuilt Node.js native libs — fetched from a GitHub Release, not tracked
+# in git (see scripts/fetch-node-libs.sh and docs/BUILDING.md)
+app/src/main/jniLibs/
+
+# Environment and credential files
+.env
+.env.*
+*.env
+credentials.json
+*.pem
+*.key
+.credentials
+.tmp-screenshots/
+
+# Supabase CLI state — local project link + cached versions
+supabase/.temp/
+
+# Figma source files (large binary; share via Figma cloud instead)
+*.fig
+
+# Playwright MCP scratch logs
+.playwright-mcp/
+
+# "Education for All" renders — separate project, not the 4AIs app
+eduforall-*
+
+# Local-only content — never ships in the OSS repo
+blenderkit/
+crsk-handoff/
+uploads/
+memory/
+.emergent/
+.superpowers/
+.gitconfig
+heartbeat.md
+tweaks-panel.jsx
+4ais Landing Page.html
+4ais-web/
+docs/reports/
+.github/skills/
+ANALYSIS_REPORT.md
+CLAUDE_CODE_HANDOFF.md
+PATCHES.md
+TARGETSDK_INVESTIGATION.md
+TALK_DRAFT.md
+TALK_TECHNICAL_GUIDE.md
+
+# Shizuku APK is no longer bundled — users download it from the official source
+app/src/main/assets/apks/*.apk
+CLAUDE.local.md
+
+# Internal working docs — not part of the OSS repo
+docs/superpowers/
+docs/design/
+docs/HANDOFF-*.md
+docs/M1-HANDOFF.md
+docs/AMBITIOUS.md

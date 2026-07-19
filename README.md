@@ -1,16 +1,22 @@
-# 4AIs — an AI agent that lives on your Android phone
+<div align="center">
 
-**It sees your screen, taps, types, and gets things done. No PC, no root, no
-cloud middleman — your API key goes straight to the model provider you choose,
-and everything else runs on the phone.**
+# 📱 4AIs
 
-<!-- TODO before launch: demo GIF here — docs/media/demo.gif -->
+**An AI agent that lives on your Android phone — it sees the screen, taps, types, and gets things done.**
+
+No PC. No root. No cloud middleman. Your API key goes straight to the model
+provider you choose, and everything else runs on the phone.
 
 [![CI](https://github.com/8crsk/openclaw-android/actions/workflows/ci.yml/badge.svg)](https://github.com/8crsk/openclaw-android/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 ![Android 8.0+](https://img.shields.io/badge/Android-8.0%2B%20arm64-green)
+[![GitHub stars](https://img.shields.io/github/stars/8crsk/openclaw-android?style=social)](https://github.com/8crsk/openclaw-android/stargazers)
 
-## What it does
+[📥 Releases](../../releases) · [🔨 Building](docs/BUILDING.md) · [🏗️ Architecture](docs/ARCHITECTURE.md) · [🐛 Report a bug](../../issues)
+
+</div>
+
+<!-- TODO before launch: demo GIF here — docs/media/demo.gif -->
 
 Ask it things like *"open WhatsApp and summarize my unread chats"* or *"find a
 5-star biryani place nearby and share it with Amma"* — the agent reads the
@@ -23,8 +29,8 @@ actions before they happen.
   Android's encrypted keystore. Nothing is proxied through our servers —
   because there are no servers.
 - 📱 **The whole agent runs on-device** — the [OpenClaw](https://openclaw.ai)
-  gateway (Node.js) runs inside the app as `libnode.so`. Kill your Wi-Fi
-  router's opinion of what an "AI device" is.
+  gateway (Node.js) runs inside the app as `libnode.so`. Your phone *is* the
+  agent runtime.
 - 👆 **Real UI automation** — accessibility-tree reading with stable element
   ids, occlusion filtering, scroll-to-find, wait-for-element, screenshots, and
   a post-action diff of what changed. No ADB, no root.
@@ -36,23 +42,37 @@ actions before they happen.
 - ⏰ **Heartbeat** — schedule proactive agent runs ("every morning, check my
   calendar and text me a plan").
 
-## Quick start
-
 > ⚠️ **Status: early.** The core loop — chat → agent → phone control — works.
 > Fresh-install setup and streaming polish are actively being hardened. Expect
 > rough edges; issues are very welcome.
 
-### Install
+## 🚀 Quickstart
 
-1. Grab the latest APK from [Releases](../../releases) (or build from source, below).
-2. Install it (arm64 device, Android 8.0+), open it, and follow the wizard:
-   consent → enable the accessibility service → automatic bootstrap
-   (~3 min, ~200MB — it installs Node.js + OpenClaw on the phone).
-3. In **Settings → AI provider**, pick a provider and paste your key.
-   No key? NVIDIA's is free: [build.nvidia.com](https://build.nvidia.com).
-4. Chat.
+### 1. Install the app
 
-### Build from source
+Grab the latest APK from [Releases](../../releases) (or [build from
+source](#-build-from-source)). You need an **arm64 device on Android 8.0+** —
+that's virtually every phone from 2017 onward.
+
+### 2. Run the setup wizard
+
+Open the app and follow along: privacy consent → enable the accessibility
+service → automatic bootstrap (~3 min, ~200MB — it installs Node.js + the
+agent gateway *on the phone*).
+
+### 3. Add a model key
+
+In **Settings → AI provider**, pick a provider and paste your key. No key?
+NVIDIA's is free: [build.nvidia.com](https://build.nvidia.com).
+
+### 4. Chat
+
+```
+you:   open youtube and find me a 20 minute yoga video
+agent: act observe → act tap 14 → act type 3 "20 minute yoga" → …
+```
+
+## 🔨 Build from source
 
 ```bash
 git clone https://github.com/8crsk/openclaw-android.git
@@ -64,7 +84,7 @@ cp local.properties.example local.properties   # set your sdk.dir
 
 No API keys are needed to build. See [docs/BUILDING.md](docs/BUILDING.md).
 
-## How it works
+## ⚙️ How it works
 
 ```
 You ──► Compose UI ──WS-RPC──► OpenClaw gateway (Node.js, on-device)
@@ -80,18 +100,28 @@ The model doesn't get raw coordinates — it gets a numbered "legend" of what's
 on screen and issues commands like `act tap 5` or `act type 3 hello`. Full
 details in [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
 
-## Roadmap
+## 💡 What people use it for
+
+- Summarizing and triaging chats, emails, and notifications
+- Multi-step errands: "find X, compare prices, share the best one"
+- Morning routines via Heartbeat: calendar check → weather → text a plan
+- Hands-free phone control for accessibility needs
+- Automating repetitive in-app workflows no API exists for
+
+## 🗺️ Roadmap
 
 - Token-by-token streaming polish (chat renders live, but there's latency to shave)
 - Hardened first-run bootstrap across more devices
 - More providers (OpenRouter, Groq, local LLM servers)
 - Smarter `act` verbs and vision-model fallback for canvas-only apps
 
-Contributions wanted on all of these — see
+## 🤝 Contributing
+
+Contributions wanted on everything above — see
 [CONTRIBUTING.md](CONTRIBUTING.md) and the
 [`good first issue`](../../labels/good%20first%20issue) label.
 
-## Security & privacy
+## 🔒 Security & privacy
 
 - Prompts and screen content go **only** to the provider you configured.
 - The gateway and automation bridge bind to localhost and require per-install
@@ -100,7 +130,7 @@ Contributions wanted on all of these — see
   device. See [SECURITY.md](SECURITY.md) for the full model and how to report
   vulnerabilities.
 
-## Credits
+## 🙏 Credits
 
 - [OpenClaw](https://openclaw.ai) — the agent gateway this app embeds
 - [AidanPark/openclaw-android](https://github.com/AidanPark/openclaw-android) —
@@ -109,7 +139,7 @@ Contributions wanted on all of these — see
 - [DroidRun Portal](https://github.com/droidrun/droidrun-portal) — inspiration
   for the accessibility legend/occlusion approach
 
-## License
+## 📄 License
 
 [MIT](LICENSE) — the app is named **4AIs**; OpenClaw is the upstream gateway
 project we embed, not our brand. This is an independent community project,

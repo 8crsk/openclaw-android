@@ -12,11 +12,11 @@ provider you choose, and everything else runs on the phone.
 ![Android 8.0+](https://img.shields.io/badge/Android-8.0%2B%20arm64-green)
 [![GitHub stars](https://img.shields.io/github/stars/8crsk/openclaw-android?style=social)](https://github.com/8crsk/openclaw-android/stargazers)
 
-[📥 Releases](../../releases) · [🔨 Building](docs/BUILDING.md) · [🏗️ Architecture](docs/ARCHITECTURE.md) · [🐛 Report a bug](../../issues)
+[🌐 4ais.in](https://4ais.in) · [📥 Releases](../../releases) · [🔨 Building](docs/BUILDING.md) · [🏗️ Architecture](docs/ARCHITECTURE.md) · [🐛 Report a bug](../../issues)
+
+<img src="docs/media/demo.gif" alt="4AIs taking a chat instruction and completing it on the phone by itself" width="300">
 
 </div>
-
-<!-- TODO before launch: demo GIF here — docs/media/demo.gif -->
 
 Ask it things like *"open WhatsApp and summarize my unread chats"* or *"find a
 5-star biryani place nearby and share it with Amma"* — the agent reads the

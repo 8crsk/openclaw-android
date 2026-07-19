@@ -38,6 +38,20 @@ android {
         noCompress.addAll(listOf("apk", "sh", "tgz", "node_modules"))
     }
 
+    // Release signing comes from the environment (CI injects it from repo
+    // secrets; locally, point these at your own keystore). Never in the repo.
+    val signingKeystorePath = System.getenv("SIGNING_KEYSTORE_PATH")
+    if (signingKeystorePath != null) {
+        signingConfigs {
+            create("release") {
+                storeFile = file(signingKeystorePath)
+                storePassword = System.getenv("SIGNING_KEYSTORE_PASSWORD")
+                keyAlias = System.getenv("SIGNING_KEY_ALIAS")
+                keyPassword = System.getenv("SIGNING_KEYSTORE_PASSWORD")
+            }
+        }
+    }
+
     buildTypes {
         release {
             isMinifyEnabled = true
@@ -46,6 +60,9 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            if (signingKeystorePath != null) {
+                signingConfig = signingConfigs.getByName("release")
+            }
         }
         // Variant for macrobenchmark runs. Production-like (non-debuggable, R8 off so the
         // benchmark module can resolve symbols), debug-signed so it installs without keystore

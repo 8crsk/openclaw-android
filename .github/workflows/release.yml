@@ -1,0 +1,47 @@
+name: Release APK
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+
+jobs:
+  build-signed:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/cache@v4
+        with:
+          path: app/src/main/jniLibs
+          key: node-libs-${{ hashFiles('scripts/node-libs.sha256') }}
+      - run: ./scripts/fetch-node-libs.sh
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+      - uses: gradle/actions/setup-gradle@v4
+      - name: Decode signing keystore
+        run: echo "${{ secrets.SIGNING_KEYSTORE_BASE64 }}" | base64 -d > "$RUNNER_TEMP/release.jks"
+      - name: Build signed release APK
+        env:
+          SIGNING_KEYSTORE_PATH: ${{ runner.temp }}/release.jks
+          SIGNING_KEYSTORE_PASSWORD: ${{ secrets.SIGNING_KEYSTORE_PASSWORD }}
+          SIGNING_KEY_ALIAS: ${{ secrets.SIGNING_KEY_ALIAS }}
+        run: ./gradlew assembleRelease --stacktrace
+      - name: Rename APK
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+          [ "$GITHUB_REF_NAME" = "$VERSION" ] && VERSION="manual-$(date +%Y%m%d)"
+          cp app/build/outputs/apk/release/app-release.apk "4ais-v${VERSION}-arm64.apk"
+          echo "APK_NAME=4ais-v${VERSION}-arm64.apk" >> "$GITHUB_ENV"
+      - name: Attach to release (tag builds)
+        if: startsWith(github.ref, 'refs/tags/')
+        run: gh release upload "$GITHUB_REF_NAME" "$APK_NAME" --clobber -R "$GITHUB_REPOSITORY"
+        env:
+          GH_TOKEN: ${{ github.token }}
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: signed-release-apk
+          path: "*.apk"

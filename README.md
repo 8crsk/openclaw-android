@@ -8,6 +8,8 @@ No PC. No root. No cloud middleman. Your API key goes straight to the model
 provider you choose, and everything else runs on the phone.
 
 [![CI](https://github.com/8crsk/openclaw-android/actions/workflows/ci.yml/badge.svg)](https://github.com/8crsk/openclaw-android/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/8crsk/openclaw-android?color=brightgreen&label=APK)](../../releases/latest)
+[![Downloads](https://img.shields.io/github/downloads/8crsk/openclaw-android/total?color=blue)](../../releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 ![Android 8.0+](https://img.shields.io/badge/Android-8.0%2B%20arm64-green)
 [![GitHub stars](https://img.shields.io/github/stars/8crsk/openclaw-android?style=social)](https://github.com/8crsk/openclaw-android/stargazers)
@@ -117,9 +119,21 @@ details in [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
 
 ## 🤝 Contributing
 
-Contributions wanted on everything above — see
-[CONTRIBUTING.md](CONTRIBUTING.md) and the
-[`good first issue`](../../labels/good%20first%20issue) label.
+The issue board is a quest board — pick your difficulty:
+
+| Label | What it means |
+|---|---|
+| [🌱 starter](../../labels/%F0%9F%8C%B1%20starter) | Small, self-contained, perfect first PR |
+| [⚔️ quest](../../labels/%E2%9A%94%EF%B8%8F%20quest) | A meaty feature with clear scope |
+| [🐉 boss](../../labels/%F0%9F%90%89%20boss) | Hard architectural challenge — fame awaits |
+| [📱 no-code](../../labels/%F0%9F%93%B1%20no-code) | Device testing, docs, demo GIFs — no Kotlin needed |
+
+Every merged PR gets you credited in the release notes; regulars land on the
+contributors wall below. Start with [CONTRIBUTING.md](CONTRIBUTING.md).
+
+<a href="../../graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=8crsk/openclaw-android" alt="Contributors" />
+</a>
 
 ## 🔒 Security & privacy
 
@@ -144,3 +158,13 @@ Contributions wanted on everything above — see
 [MIT](LICENSE) — the app is named **4AIs**; OpenClaw is the upstream gateway
 project we embed, not our brand. This is an independent community project,
 not affiliated with or endorsed by the OpenClaw team.
+
+---
+
+<div align="center">
+
+**If an AI agent living in your pocket excites you, [⭐ star the repo](../../stargazers) — it's how other people find it.**
+
+[![Star History Chart](https://api.star-history.com/svg?repos=8crsk/openclaw-android&type=Date)](https://star-history.com/#8crsk/openclaw-android&Date)
+
+</div>

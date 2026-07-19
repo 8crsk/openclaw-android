@@ -55,6 +55,29 @@ Read [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) first — the short version:
   follow those patterns).
 - UI changes: include a screenshot or screen recording in the PR.
 
+## The quest board
+
+Issues are labeled by difficulty so you can pick your level:
+
+- **🌱 starter** — small and self-contained; a perfect first PR (also tagged
+  `good first issue`)
+- **⚔️ quest** — a real feature with clear scope and acceptance criteria
+- **🐉 boss** — hard architectural challenges; the vision-fallback and
+  x86-node class of problems
+- **📱 no-code** — device compatibility testing, demo GIFs, docs,
+  translations — no Kotlin required
+
+## Leveling up
+
+- **First merged PR** → you're credited in the next release notes.
+- **Three merged PRs** (or one slain ⚔️ quest) → you appear on the
+  contributors wall in the README, permanently.
+- **Sustained contributions** → collaborator invite: triage rights, a say in
+  the roadmap, and first review on your PRs.
+
+No contribution is too small — a device compatibility report from a phone we
+haven't seen counts the same as code.
+
 ## High-impact areas (help wanted)
 
 - **New providers / OpenAI-compatible endpoints** — extend `ProviderCatalog`
@@ -63,8 +86,6 @@ Read [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) first — the short version:
 - **Fresh-install setup hardening** — the bootstrap flow on diverse devices.
 - **New `act` verbs** — smarter UI automation primitives.
 - **Docs and translations.**
-
-Look for issues labeled `good first issue` and `help wanted`.
 
 ## Questions
 

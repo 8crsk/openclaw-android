@@ -6,7 +6,7 @@ reading, and optional shell access via Shizuku. We take security reports serious
 ## Reporting a vulnerability
 
 Use GitHub's **private vulnerability reporting** (Security tab → "Report a
-vulnerability") or email **sanjaykeerthanartist@gmail.com**. Please do **not**
+vulnerability") or email **sanjay@4ais.in**. Please do **not**
 open a public issue for security problems. You'll get a first response within
 72 hours.
 

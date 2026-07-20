@@ -46,11 +46,17 @@ class ExecAllowlistTest {
         assertTrue(denied())
     }
 
-    // ── argv-smuggling via whitespace / newlines ──
-    @Test fun spaces_and_newlines_in_args_rejected() {
+    // ── argv-smuggling via newline / null injection ──
+    @Test fun newline_and_null_in_args_rejected() {
         assertTrue(denied("am", "start\n-n\nevil"))
-        assertTrue(denied("input", "text", "hello; rm -rf /"))
-        assertTrue(denied("settings", "put global adb_enabled 1"))
+        assertTrue(denied("input", "text", "hello\nrm -rf /"))
+    }
+
+    // Spaces are intentionally allowed — legitimate commands need them
+    // (e.g. `input text "hello world"`). The deny gate is the binary allowlist
+    // plus the per-key/component blocks, not whitespace.
+    @Test fun spaces_in_args_allowed_for_allowlisted_binary() {
+        assertTrue(allowed("input", "text", "hello world"))
     }
 
     // ── am start to sensitive Settings activities ──

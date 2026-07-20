@@ -62,6 +62,13 @@ Open the app and follow along: privacy consent → enable the accessibility
 service → automatic bootstrap (~3 min, ~200MB — it installs Node.js + the
 agent gateway *on the phone*).
 
+> **⚠️ Android 13+ blocks the accessibility toggle for sideloaded apps.** If
+> "4AIs UI Automation" is greyed out or says *"Restricted setting"*, that's
+> Android's standard gate for non-Play-Store apps — not a bug. To clear it:
+> **Settings → Apps → 4AIs → ⋮ (top-right menu) → Allow restricted settings**,
+> then enable the toggle under **Settings → Accessibility**. You only do this
+> once.
+
 ### 3. Add a model key
 
 In **Settings → AI provider**, pick a provider and paste your key. No key?

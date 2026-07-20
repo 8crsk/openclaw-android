@@ -144,12 +144,25 @@ contributors wall below. Start with [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## 🔒 Security & privacy
 
-- Prompts and screen content go **only** to the provider you configured.
-- The gateway and automation bridge bind to localhost and require per-install
-  random tokens.
-- Risky agent actions require your approval; everything is audit-logged on
-  device. See [SECURITY.md](SECURITY.md) for the full model and how to report
-  vulnerabilities.
+- **Your data goes only to your provider.** Prompts and screen content are sent
+  straight to the model API whose key you entered — never to us (there is no
+  "us" server). API keys live in Android's Keystore-backed encrypted storage,
+  and backup/device-transfer are disabled so they never leave the device.
+- **Localhost, token-gated.** The on-device gateway (`:3000`) and the UI
+  automation bridge (`:3001`) bind to `127.0.0.1` and require a per-install
+  random bearer token on every request, checked in constant time. Loopback
+  isn't treated as a trust boundary — the token is.
+- **Shell access is opt-in and allowlisted.** Elevated `exec` (via
+  [Shizuku](https://shizuku.rikka.app)) is **off by default**. When enabled, a
+  strict allowlist (`ExecAllowlist`) is the last line of defense against
+  prompt-injection: it rejects `sh`/`su`, blocks toggling ADB / developer mode
+  / unknown-source installs, and refuses newline/null argv-smuggling. It's
+  unit-tested.
+- **Human-in-the-loop.** Risky actions (money, messages, deletion, installs)
+  always prompt for approval and are audit-logged on device.
+
+See [SECURITY.md](SECURITY.md) for the full threat model and how to report
+vulnerabilities.
 
 ## 🙏 Credits
 

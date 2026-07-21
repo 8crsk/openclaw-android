@@ -154,7 +154,7 @@ dependencies {
     // :macrobenchmark module (Android Studio: Run > Generate Baseline Profile).
     // Without that module, this dep is still safe: it's a tiny runtime that
     // becomes a no-op when no profile is shipped.
-    implementation("androidx.profileinstaller:profileinstaller:1.3.1")
+    implementation("androidx.profileinstaller:profileinstaller:1.4.1")
 
     debugImplementation(libs.compose.ui.tooling)
 

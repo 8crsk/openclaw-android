@@ -134,7 +134,7 @@ dependencies {
 
     implementation(libs.datastore.preferences)
     implementation(libs.coroutines.android)
-    implementation("org.jetbrains.kotlinx:kotlinx-collections-immutable:0.3.7")
+    implementation("org.jetbrains.kotlinx:kotlinx-collections-immutable:0.5.1")
     // Real iOS-style backdrop blur for the composer and nav bar.
     implementation("dev.chrisbanes.haze:haze:1.2.2")
     // SF Symbol-esque line icons. Replaces Material Icons where we want a less Material feel.

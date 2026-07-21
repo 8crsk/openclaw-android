@@ -17,7 +17,7 @@ jobs:
           path: app/src/main/jniLibs
           key: node-libs-${{ hashFiles('scripts/node-libs.sha256') }}
       - run: ./scripts/fetch-node-libs.sh
-      - uses: actions/setup-java@v4
+      - uses: actions/setup-java@v5
         with:
           distribution: temurin
           java-version: 17

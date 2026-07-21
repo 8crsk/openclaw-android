@@ -12,7 +12,7 @@ jobs:
       # The prebuilt Node.js .so files come from a GitHub Release (free
       # bandwidth, unlike LFS). Cache keyed on the pinned checksum so the
       # ~33MB download only happens when the libs actually change.
-      - uses: actions/cache@v4
+      - uses: actions/cache@v6
         with:
           path: app/src/main/jniLibs
           key: node-libs-${{ hashFiles('scripts/node-libs.sha256') }}

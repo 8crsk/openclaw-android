@@ -55,6 +55,23 @@ Read [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) first — the short version:
   follow those patterns).
 - UI changes: include a screenshot or screen recording in the PR.
 
+## AI-assisted contributions
+
+AI tools are welcome — a lot of this project was built with them. But **you are
+the author**, not the tool:
+
+- **Disclose it.** If a PR was substantially AI-generated, say so in the
+  description.
+- **Build and run it first.** Confirm `./gradlew testDebugUnitTest lintDebug`
+  passes and, for anything user-facing, that you actually ran it on a device.
+  Don't open a PR you haven't verified.
+- **Understand your own change.** You should be able to explain what it does
+  and why in review.
+
+PRs that are clearly unread AI output — plausible-looking but untested, or
+padding for contribution counts — will be closed without detailed review. This
+keeps the signal high for everyone.
+
 ## The quest board
 
 Issues are labeled by difficulty so you can pick your level:

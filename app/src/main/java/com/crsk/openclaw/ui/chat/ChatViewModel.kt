@@ -233,7 +233,7 @@ class ChatViewModel @Inject constructor(
                                 error = "Stopped — this turn used over ${formatK(newTurnIn)} input tokens. " +
                                     "Try Clear to reset and rephrase.",
                             )
-                            streamJob?.cancel()
+                            // stopGenerating() aborts the run on the gateway, then cancels the stream.
                             stopGenerating()
                         }
                     }
@@ -309,6 +309,10 @@ class ChatViewModel @Inject constructor(
     }
 
     fun stopGenerating() {
+        // Abort server-side FIRST: cancelling the collector only stops us listening, the
+        // gateway would otherwise keep running the agent (and acting on the phone).
+        // Fire-and-forget — never blocks the main thread.
+        chatSession.abortActiveRun()
         streamJob?.cancel()
         streamJob = null
         val current = _state.value.messages
